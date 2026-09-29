@@ -1,0 +1,638 @@
+/**
+ * Horarios e Circuitos - com_horarios
+ * Leo Costa - www.leocostadeveloper.com (@leocostadeveloper)
+ *
+ * Every rule is scoped under .horarios-page so it wins over generic template
+ * resets without needing !important everywhere. Colors/spacing are exposed
+ * as CSS custom properties on .horarios-page - override them from
+ * Components > Horarios e Circuitos > Options > "CSS personalizado", e.g.:
+ *
+ *   .horarios-page { --horarios-teal: #0e93a0; --horarios-radius: 0.5rem; }
+ */
+
+.horarios-page {
+    --horarios-teal: #0e93a0;
+    --horarios-teal-dark: #0c7c87;
+    --horarios-teal-soft: #eaf6f7;
+    --horarios-teal-soft-border: #cdeaed;
+    --horarios-text: #1f2d33;
+    --horarios-muted: #66757c;
+    --horarios-bg: #f4f7f8;
+    --horarios-surface: #fff;
+    --horarios-border: #e1e8ea;
+    --horarios-radius: 0.6rem;
+    --horarios-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+    background: var(--horarios-bg);
+    color: var(--horarios-text);
+    font-family: var(--horarios-font);
+    line-height: 1.5;
+    padding-bottom: 3rem;
+}
+
+.horarios-page * {
+    box-sizing: border-box;
+}
+
+.horarios-page img {
+    max-width: 100%;
+}
+
+.horarios-page .horarios-alertbar img,
+.horarios-page .horarios-reservas-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding-bottom: 5px;
+}
+
+.horarios-page .horarios-reservas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding-bottom: 5px;
+    background-color: #ffffff;
+}
+
+.horarios-page .horarios-reservas-item {
+    flex: 1 1 260px;
+}
+
+/* Extra content added via Joomla modules (positions "horarios-topo" / "horarios-rodape") */
+.horarios-page .horarios-modules-horarios-topo .horarios-module {
+    margin-bottom: 5px;
+}
+
+.horarios-page .horarios-modules-horarios-topo .horarios-module img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.horarios-page .horarios-modules-horarios-rodape {
+    margin-top: 1.5rem;
+}
+
+.horarios-page .horarios-modules-horarios-rodape .horarios-module {
+    background: var(--horarios-surface);
+    border: 1px solid var(--horarios-border);
+    border-radius: var(--horarios-radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.horarios-page .horarios-modules-horarios-rodape .horarios-module:last-child {
+    margin-bottom: 0;
+}
+
+.horarios-page .horarios-modules-horarios-rodape .horarios-module img {
+    max-width: 100%;
+    height: auto;
+}
+
+.horarios-page .horarios-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 0;
+}
+
+.horarios-page .horarios-breadcrumb {
+    font-size: 0.85rem;
+    color: var(--horarios-muted);
+    margin-bottom: 0.75rem;
+}
+
+.horarios-page .horarios-breadcrumb a {
+    color: var(--horarios-muted);
+    text-decoration: none;
+}
+
+.horarios-page .horarios-breadcrumb a:hover {
+    color: var(--horarios-teal);
+}
+
+.horarios-page .horarios-breadcrumb-sep {
+    margin: 0 0.4rem;
+}
+
+.horarios-page .horarios-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.35rem;
+    color: var(--horarios-text);
+    line-height: 1.2;
+}
+
+.horarios-page .horarios-description {
+    color: var(--horarios-muted);
+    margin: 0 0 1.25rem;
+}
+
+.horarios-page .horarios-notice {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--horarios-teal-soft);
+    border: 1px solid var(--horarios-teal-soft-border);
+    color: var(--horarios-teal-dark);
+    border-radius: var(--horarios-radius);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.horarios-page .horarios-notice i {
+    font-size: 1.1rem;
+}
+
+/* Search - every control shares --horarios-control-h so they stay aligned */
+.horarios-page .horarios-search {
+    --horarios-control-h: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0.75rem;
+    background: var(--horarios-surface);
+    border: 1px solid var(--horarios-border);
+    border-radius: var(--horarios-radius);
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.horarios-page .horarios-search-field {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 2 1 260px;
+    height: var(--horarios-control-h);
+    border: 1px solid var(--horarios-border);
+    border-radius: 0.4rem;
+    padding: 0 0.85rem;
+    background: var(--horarios-surface);
+}
+
+.horarios-page .horarios-search-field i {
+    display: flex;
+    align-items: center;
+    color: var(--horarios-muted);
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.horarios-page .horarios-search-field input {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100% !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    font-size: 0.95rem;
+    font-family: inherit;
+    line-height: normal !important;
+}
+
+.horarios-page .horarios-search-field input:focus {
+    outline: none;
+}
+
+.horarios-page .horarios-search-field:focus-within {
+    border-color: var(--horarios-teal);
+    box-shadow: 0 0 0 2px var(--horarios-teal-soft);
+}
+
+.horarios-page .horarios-search-select {
+    flex: 1 1 200px;
+    height: var(--horarios-control-h) !important;
+    padding: 0 0.75rem !important;
+    border: 1px solid var(--horarios-border);
+    border-radius: 0.4rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background: var(--horarios-surface);
+    color: var(--horarios-text);
+}
+
+.horarios-page .horarios-search-btn {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    height: var(--horarios-control-h);
+    background: var(--horarios-teal);
+    color: #fff;
+    border: none;
+    border-radius: 0.4rem;
+    padding: 0 1.1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.horarios-page .horarios-search-btn:hover {
+    background: var(--horarios-teal-dark);
+    color: #fff;
+}
+
+/* Carousel */
+.horarios-page .horarios-carousel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+}
+
+.horarios-page .horarios-carousel-track {
+    display: flex;
+    gap: 0.9rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0.25rem;
+    flex: 1 1 auto;
+    scrollbar-width: thin;
+}
+
+.horarios-page .horarios-carousel-item {
+    flex: 0 0 auto;
+    width: 150px;
+    border-radius: var(--horarios-radius);
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    height: 96px;
+    display: block;
+    background: var(--horarios-teal);
+    border: 3px solid transparent;
+}
+
+.horarios-page .horarios-carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.88;
+}
+
+.horarios-page .horarios-carousel-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.horarios-page .horarios-carousel-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0));
+    text-align: center;
+}
+
+.horarios-page .horarios-carousel-item.active {
+    border-color: var(--horarios-teal-dark);
+}
+
+.horarios-page .horarios-carousel-item[hidden] {
+    display: none;
+}
+
+.horarios-page .horarios-carousel-nav {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--horarios-border);
+    background: var(--horarios-surface);
+    border-radius: 50%;
+    width: 2.2rem;
+    height: 2.2rem;
+    cursor: pointer;
+    color: var(--horarios-teal-dark);
+    padding: 0;
+}
+
+.horarios-page .horarios-carousel-nav:hover {
+    background: var(--horarios-teal);
+    color: #fff;
+}
+
+/* Layout */
+.horarios-page .horarios-layout {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.horarios-page .horarios-sidebar {
+    flex: 0 0 260px;
+    max-width: 260px;
+    width: 100%;
+    background: var(--horarios-surface);
+    border: 1px solid var(--horarios-border);
+    border-radius: var(--horarios-radius);
+    overflow: hidden;
+}
+
+.horarios-page .horarios-sidebar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.horarios-page .horarios-sidebar-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    text-decoration: none;
+    color: var(--horarios-text);
+    border-bottom: 1px solid var(--horarios-border);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.horarios-page .horarios-sidebar-list li:last-child .horarios-sidebar-link {
+    border-bottom: none;
+}
+
+.horarios-page .horarios-sidebar-link:hover {
+    background: var(--horarios-teal-soft);
+    color: var(--horarios-text);
+}
+
+.horarios-page .horarios-sidebar-link.active {
+    background: var(--horarios-teal);
+    color: #fff;
+}
+
+.horarios-page .horarios-sidebar-link[hidden] {
+    display: none;
+}
+
+.horarios-page .horarios-sidebar-link-image {
+    display: block;
+    padding: 0;
+    border-bottom: none;
+    position: relative;
+}
+
+.horarios-page .horarios-sidebar-link-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.horarios-page .horarios-sidebar-link-image:hover {
+    filter: brightness(0.92);
+}
+
+.horarios-page .horarios-sidebar-link-image.active {
+    box-shadow: inset 0 0 0 3px var(--horarios-teal-dark);
+}
+
+.horarios-page .horarios-main {
+    flex: 1 1 auto;
+    min-width: 0;
+    background: var(--horarios-surface);
+    border: 1px solid var(--horarios-border);
+    border-radius: var(--horarios-radius);
+    padding: 1.25rem;
+}
+
+.horarios-page .horarios-main-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.horarios-page .horarios-main-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.horarios-page .horarios-map-link {
+    color: var(--horarios-teal-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.horarios-page .horarios-map-link:hover {
+    text-decoration: underline;
+}
+
+.horarios-page .horarios-quicklinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+}
+
+.horarios-page .horarios-quicklink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--horarios-teal-soft);
+    color: var(--horarios-teal-dark);
+    border: 1px solid var(--horarios-teal-soft-border);
+    border-radius: var(--horarios-radius);
+    padding: 0.85rem 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    flex: 1 1 150px;
+    text-align: center;
+}
+
+.horarios-page .horarios-quicklink i {
+    font-size: 1.3rem;
+}
+
+.horarios-page .horarios-quicklink:hover {
+    background: var(--horarios-teal);
+    color: #fff;
+}
+
+/* Accordion (self-contained, no Bootstrap classes) */
+.horarios-page .horarios-acc-item {
+    border: 1px solid var(--horarios-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.horarios-page .horarios-accordion:not(.horarios-accordion-nested) > .horarios-acc-item > .horarios-acc-header {
+    background: var(--horarios-teal);
+    color: #fff;
+}
+
+.horarios-page .horarios-acc-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border: none;
+    padding: 0.9rem 1.1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    background: #f6f9fa;
+    color: var(--horarios-text);
+}
+
+.horarios-page .horarios-acc-chevron {
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.horarios-page .horarios-acc-item.is-open > .horarios-acc-header .horarios-acc-chevron {
+    transform: rotate(180deg);
+}
+
+.horarios-page .horarios-acc-body {
+    padding: 1.1rem;
+    border-top: 1px solid var(--horarios-border);
+}
+
+.horarios-page .horarios-acc-body[hidden] {
+    display: none;
+}
+
+.horarios-page .horarios-accordion-nested {
+    margin-top: 1.25rem;
+}
+
+.horarios-page .horarios-accordion-nested .horarios-acc-header {
+    background: #f6f9fa;
+    color: var(--horarios-text);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.horarios-page .horarios-folheto {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--horarios-teal-dark);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.horarios-page .horarios-folheto:hover {
+    text-decoration: underline;
+}
+
+.horarios-page .horarios-tab-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    border-bottom: 2px solid var(--horarios-border);
+    margin: 0;
+    padding: 0;
+}
+
+.horarios-page .horarios-tab-btn {
+    color: var(--horarios-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    border-bottom: 3px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    font-family: inherit;
+    padding: 0.6rem 0.9rem;
+    margin-bottom: -2px;
+    cursor: pointer;
+}
+
+.horarios-page .horarios-tab-btn.is-active {
+    color: var(--horarios-teal-dark);
+    border-bottom-color: var(--horarios-teal);
+}
+
+.horarios-page .horarios-tab-panels {
+    padding: 1rem 0.25rem;
+}
+
+.horarios-page .horarios-tab-panel {
+    display: none;
+}
+
+.horarios-page .horarios-tab-panel.is-active {
+    display: block;
+}
+
+.horarios-page .horarios-media-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.4rem;
+    border: 1px solid var(--horarios-border);
+}
+
+.horarios-page .horarios-media-pdf-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--horarios-teal-dark);
+    text-decoration: none;
+    margin-bottom: 0.6rem;
+}
+
+.horarios-page .horarios-media-embed {
+    width: 100%;
+    height: 480px;
+    border: 1px solid var(--horarios-border);
+    border-radius: 0.4rem;
+}
+
+.horarios-page .horarios-media-empty {
+    color: var(--horarios-muted);
+    font-style: italic;
+}
+
+.horarios-page .horarios-empty {
+    color: var(--horarios-muted);
+    font-style: italic;
+}
+
+@media (max-width: 782px) {
+    .horarios-page .horarios-layout {
+        flex-direction: column;
+    }
+
+    .horarios-page .horarios-sidebar {
+        flex-basis: auto;
+        max-width: 100%;
+    }
+
+    .horarios-page .horarios-media-embed {
+        height: 320px;
+    }
+
+    .horarios-page .horarios-quicklinks {
+        flex-direction: column;
+    }
+}

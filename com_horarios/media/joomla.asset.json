@@ -1,0 +1,23 @@
+{
+    "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+    "name": "com_horarios",
+    "version": "1.1.1",
+    "description": "Horários e Circuitos - assets do frontend",
+    "assets": [
+        {
+            "name": "com_horarios.horarios",
+            "type": "style",
+            "uri": "com_horarios/css/horarios.css",
+            "version": "1.1.1"
+        },
+        {
+            "name": "com_horarios.horarios",
+            "type": "script",
+            "uri": "com_horarios/js/horarios.js",
+            "version": "1.1.1",
+            "attributes": {
+                "defer": true
+            }
+        }
+    ]
+}

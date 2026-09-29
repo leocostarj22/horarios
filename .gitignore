@@ -1,0 +1,9 @@
+# Build artifacts (regenerate by zipping com_horarios/)
+*.zip
+backup/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

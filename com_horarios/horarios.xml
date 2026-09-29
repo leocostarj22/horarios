@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="5.0" method="upgrade">
+    <name>com_horarios</name>
+    <author>Leonardo Costa</author>
+    <authorEmail>contato@leocostadeveloper.com</authorEmail>
+    <authorUrl>https://www.leocostadeveloper.com</authorUrl>
+    <creationDate>2026-09</creationDate>
+    <copyright>Copyright (C) Leo Costa (@leocostadeveloper - www.leocostadeveloper.com). All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <version>1.3.0</version>
+    <description>COM_HORARIOS_XML_DESCRIPTION</description>
+    <namespace path="src">Joomla\Component\Horarios</namespace>
+
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+
+    <files folder="site">
+        <file>index.html</file>
+        <folder>language</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+
+    <languages folder="site">
+        <language tag="pt-PT">language/pt-PT/com_horarios.ini</language>
+    </languages>
+
+    <media destination="com_horarios" folder="media">
+        <file>joomla.asset.json</file>
+        <folder>css</folder>
+        <folder>js</folder>
+    </media>
+
+    <administration>
+        <menu img="class:horarios">COM_HORARIOS</menu>
+        <submenu>
+            <menu link="option=com_horarios&amp;view=municipios" view="municipios">COM_HORARIOS_MENU_MUNICIPIOS</menu>
+            <menu link="option=com_horarios&amp;view=circuitos" view="circuitos">COM_HORARIOS_MENU_CIRCUITOS</menu>
+            <menu link="option=com_horarios&amp;view=banners" view="banners">COM_HORARIOS_MENU_BANNERS</menu>
+            <menu link="option=com_horarios&amp;view=reservas" view="reservas">COM_HORARIOS_MENU_RESERVAS</menu>
+        </submenu>
+
+        <files folder="admin">
+            <file>index.html</file>
+            <file>access.xml</file>
+            <file>config.xml</file>
+            <folder>forms</folder>
+            <folder>language</folder>
+            <folder>services</folder>
+            <folder>sql</folder>
+            <folder>src</folder>
+            <folder>tmpl</folder>
+        </files>
+
+        <languages folder="admin">
+            <language tag="pt-PT">language/pt-PT/com_horarios.ini</language>
+            <language tag="pt-PT">language/pt-PT/com_horarios.sys.ini</language>
+        </languages>
+    </administration>
+</extension>

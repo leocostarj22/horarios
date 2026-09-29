@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset name="general" label="COM_HORARIOS_CONFIG_GENERAL_LABEL">
+        <field
+            name="page_title"
+            type="text"
+            default="Circuitos, horários e tarifários"
+            label="COM_HORARIOS_CONFIG_PAGE_TITLE_LABEL"
+        />
+
+        <field
+            name="page_description"
+            type="textarea"
+            rows="2"
+            default="Consulte aqui os circuitos, horários e tarifários dos serviços de transporte público."
+            label="COM_HORARIOS_CONFIG_PAGE_DESCRIPTION_LABEL"
+        />
+
+        <field
+            name="notice_text"
+            type="text"
+            default="Admite-se um atraso de 10 minutos no cumprimento dos horários indicados."
+            label="COM_HORARIOS_CONFIG_NOTICE_TEXT_LABEL"
+        />
+
+        <field
+            name="show_carousel"
+            type="radio"
+            class="switcher"
+            default="1"
+            label="COM_HORARIOS_CONFIG_SHOW_CAROUSEL_LABEL"
+            description="COM_HORARIOS_CONFIG_SHOW_CAROUSEL_DESC"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field
+            name="carousel_visible_items"
+            type="list"
+            default="6"
+            label="COM_HORARIOS_CONFIG_CAROUSEL_ITEMS_LABEL"
+            showon="show_carousel:1"
+        >
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+        </field>
+
+        <field
+            name="items_per_page"
+            type="list"
+            default="0"
+            label="COM_HORARIOS_CONFIG_ITEMS_PER_PAGE_LABEL"
+        >
+            <option value="0">JGLOBAL_USE_GLOBAL</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="0_all">JALL</option>
+        </field>
+    </fieldset>
+
+    <fieldset name="appearance" label="COM_HORARIOS_CONFIG_APPEARANCE_LABEL">
+        <field
+            name="custom_css"
+            type="textarea"
+            rows="20"
+            filter="raw"
+            label="COM_HORARIOS_CONFIG_CUSTOM_CSS_LABEL"
+            description="COM_HORARIOS_CONFIG_CUSTOM_CSS_DESC"
+            class="span12"
+        />
+    </fieldset>
+
+    <fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
+        <field
+            name="rules"
+            type="rules"
+            label="JCONFIG_PERMISSIONS_LABEL"
+            class="inputbox"
+            filter="rules"
+            component="com_horarios"
+            section="component"
+        />
+    </fieldset>
+</config>
